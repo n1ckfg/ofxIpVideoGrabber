@@ -16,7 +16,8 @@ void ofApp::setup()
     // Many axis cameras allow video resolution, fps, etc to be manipulated with url arguments.
     // N.B. If you don't see an image, the camera may be offline or no longer in service and
     // this link may need to be replaced with a valid link.
-    grabber.setURI("http://107.1.228.34/axis-cgi/mjpg/video.cgi?resolution=320x240");
+    grabber.setURI("http://nfg-rpi-3-4.local:7111/ipvideo");
+//107.1.228.34/axis-cgi/mjpg/video.cgi?resolution=320x240");
 
     // Connect to the stream.
     grabber.connect();
@@ -29,6 +30,8 @@ void ofApp::update()
     
     if (grabber.isFrameNew())
     {
+        std::cout << "Received frame." << endl;
+        
         cameraPix = grabber.getPixels();
         
         // Use or modify pixels in some way, e.g. invert the colors.
